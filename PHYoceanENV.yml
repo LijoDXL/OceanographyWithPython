@@ -1,0 +1,43 @@
+name: PHY_OCEAN
+channels:
+    - conda-forge
+    - pyviz
+    - defaults
+dependencies:
+    - python    # Python version 3.6
+    - xarray    # N-d labeled array library
+    - numpy         # N-d array and numerics
+    - scipy         # Common math/stats/science functions
+    - matplotlib    # 2D plotting library
+    - cartopy       # Geographic plotting toolkit
+    - pandas        # Labeled array library
+    - iris
+    - jupyterlab
+    - jupyter       # Jupyter federation architecture
+    - notebook      # Notebook interface
+    - ipython       # IPython interpreter and tools
+    - dask          # Parallel processing library
+    - future        # Python 2/3 compatibility
+    - netcdf4       # Wrapper for netcdf4
+    - pynio
+    - metpy
+    - shapely
+    - geopandas
+    - wrf-python
+    - pyferret
+    - ferret_datasets
+    - jupytext 
+    - erddapy
+    - scikit-learn  # Macine learning library
+    - statsmodels   # Regression/modeling toolkit
+    - seaborn       # Statistical visualizations
+    - xesmf
+    - cmocean
+    - nodejs
+    - holoviews
+    - geoviews
+    - hvplot
+    - pip:
+      - ferretmagic
+      - regionmask
+      - salem
