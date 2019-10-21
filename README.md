@@ -11,30 +11,23 @@ You can run the tutorial/slide online without installing anything on your local 
 If you wish to have a local copy instead, follow the steps below:
 * download [miniconda](https://docs.conda.io/en/latest/miniconda.html) (Python 3.x 64-bit version recommended) and install it using the instructions provided [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).  
 * copy and paste the following command in your terminal to clone this repository:
-
 ```bash
 git clone https://github.com/LijoDXL/OceanographyWithPython.git
 ```
-
-* change to the cloned directory and create a new conda enviornment:
-
+* change to the cloned directory and create a new conda environment:
 ```bash
 cd OceanographyWithPython
 conda env create -f PHYoceanENV.yml
 ```
-
-* you can now activate the new enviornment by typing:
-
+* you can now activate the new environment by typing:
 ```bash
 conda activate PHY_OCEAN
 # when done, deactivate env by
 conda deactivate
 ```
-
-* currently active enviorment name will be appended to the leftmost side of your command promt. More details about managing enviornment with conda can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+* currently active environment name will be appended to the leftmost side of your command prompt. More details about managing environment with conda can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
 * you are all set. Take Jupyter Lab for a spin by issuing the following command:
-
 ```bash
 Jupyter Lab
 ```
