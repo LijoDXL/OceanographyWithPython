@@ -46,6 +46,6 @@ More details on managing environment with conda can be found [here](https://docs
 
 ## Other tools worth learning
 
-[Git](https://git-scm.com): Version control your workflow. Say goodbye to files like draft.doc,draft_edited.doc,draft_final_correction.doc,final_v1.doc,final_v2.doc,absolutely_final.doc. Learn more about git from [here](http://swcarpentry.github.io/git-novice/), [here](https://barbagroup.github.io/essential_skills_RRC/git/git/) and [here](https://www.atlassian.com/git/tutorials/comparing-workflows)
+* [Git](https://git-scm.com): Version control your workflow. Never have the hassle of dealing with files like draft.doc,draft_edited.doc,draft_final_correction.doc,final_v1.doc,final_v2.doc,absolutely_final.doc. Learn more about git from [here](http://swcarpentry.github.io/git-novice/), [here](https://barbagroup.github.io/essential_skills_RRC/git/git/) and [here](https://www.atlassian.com/git/tutorials/comparing-workflows).
 
-[Tmux](https://github.com/tmux/tmux/wiki): Easily organize your various terminal sessions. Highly useful if you work with remote sessions a lot. Learn more about Tmux from [here](https://thoughtbot.com/blog/a-tmux-crash-course), [here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and [here](https://tmuxp.git-pull.com/en/latest/about_tmux.html)
+* [Tmux](https://github.com/tmux/tmux/wiki): Easily organize your various terminal sessions. Highly useful if you work with remote sessions a lot. Learn more about Tmux from [here](https://thoughtbot.com/blog/a-tmux-crash-course), [here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and [here](https://tmuxp.git-pull.com/en/latest/about_tmux.html).
