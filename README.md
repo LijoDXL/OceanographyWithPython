@@ -28,7 +28,7 @@ conda deactivate
 ```
 * Your terminal prompt will change to indicate the currently active environment. That's it, now take JupyterLab for a spin by typing:
 ```bash
-Jupyter lab
+jupyter lab
 ```
 
 ## Adding packages in your environment
