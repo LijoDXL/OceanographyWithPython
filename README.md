@@ -10,7 +10,7 @@
 You can run the tutorial/slide online without installing anything on your local machine just by clicking `launch Binder` icon from the top left corner of this README file.
 
 If you wish to have a local copy instead, follow the steps below:
-* Download [miniconda](https://docs.conda.io/en/latest/miniconda.html) (Python 3.x 64-bit version recommended) and install it using the instructions provided [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).  
+* Download [miniconda](https://docs.conda.io/en/latest/miniconda.html) (Python 3.x 64-bit version recommended) and install it using the instructions provided [here](https://conda.io/projects/conda/en/latest/user-guide/install/index.html). Skip this step if you already have miniconda/Anaconda installed.
 * Copy and paste the following command in your terminal to clone this repository:
 ```bash
 git clone https://github.com/LijoDXL/OceanographyWithPython.git
