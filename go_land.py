@@ -1,6 +1,6 @@
 # don't be overwhelmed by this function
-# the function just adds coastlines and formats
-# the latitude longitude labeling
+# It just adds coastlines and a nicely
+# formatted latitude,longitude labelling
 import cartopy as cr
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
@@ -8,15 +8,17 @@ import cartopy.feature as cfeature
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 def fig_beauty(ax,xlim=None,ylim=None,ocean=False):
     '''
-       fig_beauty(ax,xlim,ylim,n)    ->   sets the aesthetics of the figure
-       parameter : xlim: list
-                         lower and upper lon values to set the plot extent
-                   ylim: list
-                         lower and upper lat values to set the plot extent
-                     ax: matplotlib axes
-                         axis of the plotted figure
-                  ocean: Boolean
-                         whether to add ocean 
+       sets the aesthetics of the figure
+       parameter :
+       ============
+       xlim : list
+              lower and upper lon values to set the plot extent
+       ylim : list
+              lower and upper lat values to set the plot extent
+       ax   : matplotlib axes
+              axis of the plotted figure
+       ocean: boolean
+              whether to add ocean 
     '''
     if xlim is not None:
         ax.set_xlim(xlim[0],xlim[1])
@@ -30,6 +32,6 @@ def fig_beauty(ax,xlim=None,ylim=None,ocean=False):
     ax.set_yticklabels('')
     gl=ax.gridlines(color='black',linestyle='--',alpha=0.15,linewidth=2)
     gl.xlabels_bottom=True
-    gl.ylabels_left = True 
+    gl.ylabels_left = True
     gl.xformatter = LONGITUDE_FORMATTER
-    gl.yformatter = LATITUDE_FORMATTER  
+    gl.yformatter = LATITUDE_FORMATTER
