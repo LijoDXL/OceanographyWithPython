@@ -1,0 +1,19 @@
+- file: README
+  title: "Intro"
+  numbered: false
+
+- part: Basics
+  chapters:
+  - file: L1-introduction
+  - file: L2-notebookANDbasics
+
+- part: Read and plot data
+  chapters:
+  - file: L3-working_with_ASCII_csv_txt
+  - file: L4-working_with_netCDF
+  - file: L5-working_with_large_dataset
+
+- part: Misc
+  chapters:
+  - file: useful_packages_list
+    title: "other packages"

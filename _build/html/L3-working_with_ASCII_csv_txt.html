@@ -1,0 +1,1288 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Text files and CSV &#8212; Oceanography with python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gridded data, NetCDF" href="L4-working_with_netCDF.html" />
+    <link rel="prev" title="Jupyter Notebook" href="L2-notebookANDbasics.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Oceanography with python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L1-introduction.html">
+   Aim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html">
+   Jupyter Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html#the-basics">
+   The basics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Read and plot data
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Text files and CSV
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4-working_with_netCDF.html">
+   Gridded data, NetCDF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L5-working_with_large_dataset.html">
+   Big Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="useful_packages_list.html">
+   other packages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/L3-working_with_ASCII_csv_txt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython/issues/new?title=Issue%20on%20page%20%2FL3-working_with_ASCII_csv_txt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LijoDXL/OceanographyWithPython/edit/gh-pages/L3-working_with_ASCII_csv_txt.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LijoDXL/OceanographyWithPython/gh-pages/v2/gh/LijoDXL/OceanographyWithPython/gh-pages?urlpath=tree/L3-working_with_ASCII_csv_txt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   Pandas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-references">
+   Further references:
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="text-files-and-csv">
+<h1>Text files and CSV<a class="headerlink" href="#text-files-and-csv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pandas">
+<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Data in tabular form? Use <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> package</p></li>
+<li><p>It can easily read and write text/ascii/csv files</p></li>
+<li><p>Data is messy? Read the messy data and clean in Pandas</p></li>
+<li><p>Pandas can deal with column renaming, missing values, column datatypes, date and time settings and timezones</p></li>
+<li><p>Want to plot all numerical columns in the same axis? Pandas plotting method got you covered</p></li>
+<li><p>Pandas documentation <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">page</a> has a 10 min guide to get you started</p></li>
+</ul>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<p>We will use Pandas to do the following tasks</p>
+<ul class="simple">
+<li><p>Read rainfall data (accessible from data/ directory) for 36 subdivisions in India</p></li>
+<li><p>plot summer monsoon rainfall for all divisions for a given year</p></li>
+<li><p>tidy the data and index it by date</p></li>
+<li><p>plot time series for selected subdivisions</p></li>
+</ul>
+<p>Data used here is provided by India Meteorological Department(IMD), Govt. of India
+and downloaded from <a class="reference external" href="https://www.kaggle.com/rajanand/rainfall-in-india">here</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/rainfall_in_india_1901-2015.csv&#39;</span><span class="p">,</span><span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;nan&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># display first 5 rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SUBDIVISION</th>
+      <th>YEAR</th>
+      <th>JAN</th>
+      <th>FEB</th>
+      <th>MAR</th>
+      <th>APR</th>
+      <th>MAY</th>
+      <th>JUN</th>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>
+      <th>ANNUAL</th>
+      <th>Jan-Feb</th>
+      <th>Mar-May</th>
+      <th>Jun-Sep</th>
+      <th>Oct-Dec</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1901</td>
+      <td>49.2</td>
+      <td>87.1</td>
+      <td>29.2</td>
+      <td>2.3</td>
+      <td>528.8</td>
+      <td>517.5</td>
+      <td>365.1</td>
+      <td>481.1</td>
+      <td>332.6</td>
+      <td>388.5</td>
+      <td>558.2</td>
+      <td>33.6</td>
+      <td>3373.2</td>
+      <td>136.3</td>
+      <td>560.3</td>
+      <td>1696.3</td>
+      <td>980.3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1902</td>
+      <td>0.0</td>
+      <td>159.8</td>
+      <td>12.2</td>
+      <td>0.0</td>
+      <td>446.1</td>
+      <td>537.1</td>
+      <td>228.9</td>
+      <td>753.7</td>
+      <td>666.2</td>
+      <td>197.2</td>
+      <td>359.0</td>
+      <td>160.5</td>
+      <td>3520.7</td>
+      <td>159.8</td>
+      <td>458.3</td>
+      <td>2185.9</td>
+      <td>716.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1903</td>
+      <td>12.7</td>
+      <td>144.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>235.1</td>
+      <td>479.9</td>
+      <td>728.4</td>
+      <td>326.7</td>
+      <td>339.0</td>
+      <td>181.2</td>
+      <td>284.4</td>
+      <td>225.0</td>
+      <td>2957.4</td>
+      <td>156.7</td>
+      <td>236.1</td>
+      <td>1874.0</td>
+      <td>690.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1904</td>
+      <td>9.4</td>
+      <td>14.7</td>
+      <td>0.0</td>
+      <td>202.4</td>
+      <td>304.5</td>
+      <td>495.1</td>
+      <td>502.0</td>
+      <td>160.1</td>
+      <td>820.4</td>
+      <td>222.2</td>
+      <td>308.7</td>
+      <td>40.1</td>
+      <td>3079.6</td>
+      <td>24.1</td>
+      <td>506.9</td>
+      <td>1977.6</td>
+      <td>571.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1905</td>
+      <td>1.3</td>
+      <td>0.0</td>
+      <td>3.3</td>
+      <td>26.9</td>
+      <td>279.5</td>
+      <td>628.7</td>
+      <td>368.7</td>
+      <td>330.5</td>
+      <td>297.0</td>
+      <td>260.7</td>
+      <td>25.4</td>
+      <td>344.7</td>
+      <td>2566.7</td>
+      <td>1.3</td>
+      <td>309.7</td>
+      <td>1624.9</td>
+      <td>630.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># display last 5 rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SUBDIVISION</th>
+      <th>YEAR</th>
+      <th>JAN</th>
+      <th>FEB</th>
+      <th>MAR</th>
+      <th>APR</th>
+      <th>MAY</th>
+      <th>JUN</th>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>
+      <th>ANNUAL</th>
+      <th>Jan-Feb</th>
+      <th>Mar-May</th>
+      <th>Jun-Sep</th>
+      <th>Oct-Dec</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4111</th>
+      <td>LAKSHADWEEP</td>
+      <td>2011</td>
+      <td>5.1</td>
+      <td>2.8</td>
+      <td>3.1</td>
+      <td>85.9</td>
+      <td>107.2</td>
+      <td>153.6</td>
+      <td>350.2</td>
+      <td>254.0</td>
+      <td>255.2</td>
+      <td>117.4</td>
+      <td>184.3</td>
+      <td>14.9</td>
+      <td>1533.7</td>
+      <td>7.9</td>
+      <td>196.2</td>
+      <td>1013.0</td>
+      <td>316.6</td>
+    </tr>
+    <tr>
+      <th>4112</th>
+      <td>LAKSHADWEEP</td>
+      <td>2012</td>
+      <td>19.2</td>
+      <td>0.1</td>
+      <td>1.6</td>
+      <td>76.8</td>
+      <td>21.2</td>
+      <td>327.0</td>
+      <td>231.5</td>
+      <td>381.2</td>
+      <td>179.8</td>
+      <td>145.9</td>
+      <td>12.4</td>
+      <td>8.8</td>
+      <td>1405.5</td>
+      <td>19.3</td>
+      <td>99.6</td>
+      <td>1119.5</td>
+      <td>167.1</td>
+    </tr>
+    <tr>
+      <th>4113</th>
+      <td>LAKSHADWEEP</td>
+      <td>2013</td>
+      <td>26.2</td>
+      <td>34.4</td>
+      <td>37.5</td>
+      <td>5.3</td>
+      <td>88.3</td>
+      <td>426.2</td>
+      <td>296.4</td>
+      <td>154.4</td>
+      <td>180.0</td>
+      <td>72.8</td>
+      <td>78.1</td>
+      <td>26.7</td>
+      <td>1426.3</td>
+      <td>60.6</td>
+      <td>131.1</td>
+      <td>1057.0</td>
+      <td>177.6</td>
+    </tr>
+    <tr>
+      <th>4114</th>
+      <td>LAKSHADWEEP</td>
+      <td>2014</td>
+      <td>53.2</td>
+      <td>16.1</td>
+      <td>4.4</td>
+      <td>14.9</td>
+      <td>57.4</td>
+      <td>244.1</td>
+      <td>116.1</td>
+      <td>466.1</td>
+      <td>132.2</td>
+      <td>169.2</td>
+      <td>59.0</td>
+      <td>62.3</td>
+      <td>1395.0</td>
+      <td>69.3</td>
+      <td>76.7</td>
+      <td>958.5</td>
+      <td>290.5</td>
+    </tr>
+    <tr>
+      <th>4115</th>
+      <td>LAKSHADWEEP</td>
+      <td>2015</td>
+      <td>2.2</td>
+      <td>0.5</td>
+      <td>3.7</td>
+      <td>87.1</td>
+      <td>133.1</td>
+      <td>296.6</td>
+      <td>257.5</td>
+      <td>146.4</td>
+      <td>160.4</td>
+      <td>165.4</td>
+      <td>231.0</td>
+      <td>159.0</td>
+      <td>1642.9</td>
+      <td>2.7</td>
+      <td>223.9</td>
+      <td>860.9</td>
+      <td>555.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># prints info of row and column types</span>
+<span class="c1"># and the number of non-null values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 4116 entries, 0 to 4115
+Data columns (total 19 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   SUBDIVISION  4116 non-null   object 
+ 1   YEAR         4116 non-null   int64  
+ 2   JAN          4112 non-null   float64
+ 3   FEB          4113 non-null   float64
+ 4   MAR          4110 non-null   float64
+ 5   APR          4112 non-null   float64
+ 6   MAY          4113 non-null   float64
+ 7   JUN          4111 non-null   float64
+ 8   JUL          4109 non-null   float64
+ 9   AUG          4112 non-null   float64
+ 10  SEP          4110 non-null   float64
+ 11  OCT          4109 non-null   float64
+ 12  NOV          4105 non-null   float64
+ 13  DEC          4106 non-null   float64
+ 14  ANNUAL       4090 non-null   float64
+ 15  Jan-Feb      4110 non-null   float64
+ 16  Mar-May      4107 non-null   float64
+ 17  Jun-Sep      4106 non-null   float64
+ 18  Oct-Dec      4103 non-null   float64
+dtypes: float64(17), int64(1), object(1)
+memory usage: 611.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the number of null values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;YEAR&#39;</span><span class="p">:</span><span class="s1">&#39;DEC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>YEAR     0
+JAN      4
+FEB      3
+MAR      6
+APR      4
+MAY      3
+JUN      5
+JUL      7
+AUG      4
+SEP      6
+OCT      7
+NOV     11
+DEC     10
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># unique values in a column</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;ANDAMAN &amp; NICOBAR ISLANDS&#39;, &#39;ARUNACHAL PRADESH&#39;,
+       &#39;ASSAM &amp; MEGHALAYA&#39;, &#39;NAGA MANI MIZO TRIPURA&#39;,
+       &#39;SUB HIMALAYAN WEST BENGAL &amp; SIKKIM&#39;, &#39;GANGETIC WEST BENGAL&#39;,
+       &#39;ORISSA&#39;, &#39;JHARKHAND&#39;, &#39;BIHAR&#39;, &#39;EAST UTTAR PRADESH&#39;,
+       &#39;WEST UTTAR PRADESH&#39;, &#39;UTTARAKHAND&#39;, &#39;HARYANA DELHI &amp; CHANDIGARH&#39;,
+       &#39;PUNJAB&#39;, &#39;HIMACHAL PRADESH&#39;, &#39;JAMMU &amp; KASHMIR&#39;, &#39;WEST RAJASTHAN&#39;,
+       &#39;EAST RAJASTHAN&#39;, &#39;WEST MADHYA PRADESH&#39;, &#39;EAST MADHYA PRADESH&#39;,
+       &#39;GUJARAT REGION&#39;, &#39;SAURASHTRA &amp; KUTCH&#39;, &#39;KONKAN &amp; GOA&#39;,
+       &#39;MADHYA MAHARASHTRA&#39;, &#39;MATATHWADA&#39;, &#39;VIDARBHA&#39;, &#39;CHHATTISGARH&#39;,
+       &#39;COASTAL ANDHRA PRADESH&#39;, &#39;TELANGANA&#39;, &#39;RAYALSEEMA&#39;, &#39;TAMIL NADU&#39;,
+       &#39;COASTAL KARNATAKA&#39;, &#39;NORTH INTERIOR KARNATAKA&#39;,
+       &#39;SOUTH INTERIOR KARNATAKA&#39;, &#39;KERALA&#39;, &#39;LAKSHADWEEP&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># index by year</span>
+<span class="n">df_year</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">)</span>
+<span class="n">df_year</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SUBDIVISION</th>
+      <th>JAN</th>
+      <th>FEB</th>
+      <th>MAR</th>
+      <th>APR</th>
+      <th>MAY</th>
+      <th>JUN</th>
+      <th>JUL</th>
+      <th>AUG</th>
+      <th>SEP</th>
+      <th>OCT</th>
+      <th>NOV</th>
+      <th>DEC</th>
+      <th>ANNUAL</th>
+      <th>Jan-Feb</th>
+      <th>Mar-May</th>
+      <th>Jun-Sep</th>
+      <th>Oct-Dec</th>
+    </tr>
+    <tr>
+      <th>YEAR</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1901</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>49.2</td>
+      <td>87.1</td>
+      <td>29.2</td>
+      <td>2.3</td>
+      <td>528.8</td>
+      <td>517.5</td>
+      <td>365.1</td>
+      <td>481.1</td>
+      <td>332.6</td>
+      <td>388.5</td>
+      <td>558.2</td>
+      <td>33.6</td>
+      <td>3373.2</td>
+      <td>136.3</td>
+      <td>560.3</td>
+      <td>1696.3</td>
+      <td>980.3</td>
+    </tr>
+    <tr>
+      <th>1902</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>0.0</td>
+      <td>159.8</td>
+      <td>12.2</td>
+      <td>0.0</td>
+      <td>446.1</td>
+      <td>537.1</td>
+      <td>228.9</td>
+      <td>753.7</td>
+      <td>666.2</td>
+      <td>197.2</td>
+      <td>359.0</td>
+      <td>160.5</td>
+      <td>3520.7</td>
+      <td>159.8</td>
+      <td>458.3</td>
+      <td>2185.9</td>
+      <td>716.7</td>
+    </tr>
+    <tr>
+      <th>1903</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>12.7</td>
+      <td>144.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>235.1</td>
+      <td>479.9</td>
+      <td>728.4</td>
+      <td>326.7</td>
+      <td>339.0</td>
+      <td>181.2</td>
+      <td>284.4</td>
+      <td>225.0</td>
+      <td>2957.4</td>
+      <td>156.7</td>
+      <td>236.1</td>
+      <td>1874.0</td>
+      <td>690.6</td>
+    </tr>
+    <tr>
+      <th>1904</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>9.4</td>
+      <td>14.7</td>
+      <td>0.0</td>
+      <td>202.4</td>
+      <td>304.5</td>
+      <td>495.1</td>
+      <td>502.0</td>
+      <td>160.1</td>
+      <td>820.4</td>
+      <td>222.2</td>
+      <td>308.7</td>
+      <td>40.1</td>
+      <td>3079.6</td>
+      <td>24.1</td>
+      <td>506.9</td>
+      <td>1977.6</td>
+      <td>571.0</td>
+    </tr>
+    <tr>
+      <th>1905</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>1.3</td>
+      <td>0.0</td>
+      <td>3.3</td>
+      <td>26.9</td>
+      <td>279.5</td>
+      <td>628.7</td>
+      <td>368.7</td>
+      <td>330.5</td>
+      <td>297.0</td>
+      <td>260.7</td>
+      <td>25.4</td>
+      <td>344.7</td>
+      <td>2566.7</td>
+      <td>1.3</td>
+      <td>309.7</td>
+      <td>1624.9</td>
+      <td>630.8</td>
+    </tr>
+    <tr>
+      <th>1906</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>36.6</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>556.1</td>
+      <td>733.3</td>
+      <td>247.7</td>
+      <td>320.5</td>
+      <td>164.3</td>
+      <td>267.8</td>
+      <td>128.9</td>
+      <td>79.2</td>
+      <td>2534.4</td>
+      <td>36.6</td>
+      <td>556.1</td>
+      <td>1465.8</td>
+      <td>475.9</td>
+    </tr>
+    <tr>
+      <th>1907</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>110.7</td>
+      <td>0.0</td>
+      <td>113.3</td>
+      <td>21.6</td>
+      <td>616.3</td>
+      <td>305.2</td>
+      <td>443.9</td>
+      <td>377.6</td>
+      <td>200.4</td>
+      <td>264.4</td>
+      <td>648.9</td>
+      <td>245.6</td>
+      <td>3347.9</td>
+      <td>110.7</td>
+      <td>751.2</td>
+      <td>1327.1</td>
+      <td>1158.9</td>
+    </tr>
+    <tr>
+      <th>1908</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>20.9</td>
+      <td>85.1</td>
+      <td>0.0</td>
+      <td>29.0</td>
+      <td>562.0</td>
+      <td>693.6</td>
+      <td>481.4</td>
+      <td>699.9</td>
+      <td>428.8</td>
+      <td>170.7</td>
+      <td>208.1</td>
+      <td>196.9</td>
+      <td>3576.4</td>
+      <td>106.0</td>
+      <td>591.0</td>
+      <td>2303.7</td>
+      <td>575.7</td>
+    </tr>
+    <tr>
+      <th>1910</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>26.6</td>
+      <td>22.7</td>
+      <td>206.3</td>
+      <td>89.3</td>
+      <td>224.5</td>
+      <td>472.7</td>
+      <td>264.3</td>
+      <td>337.4</td>
+      <td>626.6</td>
+      <td>208.2</td>
+      <td>267.3</td>
+      <td>153.5</td>
+      <td>2899.4</td>
+      <td>49.3</td>
+      <td>520.1</td>
+      <td>1701.0</td>
+      <td>629.0</td>
+    </tr>
+    <tr>
+      <th>1911</th>
+      <td>ANDAMAN &amp; NICOBAR ISLANDS</td>
+      <td>0.0</td>
+      <td>8.4</td>
+      <td>0.0</td>
+      <td>122.5</td>
+      <td>327.3</td>
+      <td>649.0</td>
+      <td>253.0</td>
+      <td>187.1</td>
+      <td>464.5</td>
+      <td>333.8</td>
+      <td>94.5</td>
+      <td>247.1</td>
+      <td>2687.2</td>
+      <td>8.4</td>
+      <td>449.8</td>
+      <td>1553.6</td>
+      <td>675.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cell magic command to get plots inline</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> 
+<span class="c1"># select a year and plot rainfall through jun-sep for all subdivision</span>
+<span class="n">df_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2003</span><span class="p">,[</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">,</span><span class="s1">&#39;Jun-Sep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;SUBDIVISION&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/L3-working_with_ASCII_csv_txt_11_1.png" src="_images/L3-working_with_ASCII_csv_txt_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to convert datetime from strings to python recognized type for datetime</span>
+<span class="k">def</span> <span class="nf">tidy</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%b&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># reorient the data so that dates become the index and </span>
+<span class="c1"># drop the columns to the right of &quot;ANNUAL&quot; column</span>
+<span class="n">df_clean</span><span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">:</span><span class="s1">&#39;DEC&#39;</span><span class="p">]</span>
+           <span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">,</span><span class="s1">&#39;YEAR&#39;</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;YEAR&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;level_2&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;precip&#39;</span><span class="p">,</span><span class="s1">&#39;SUBDIVISION&#39;</span><span class="p">:</span><span class="s1">&#39;subdivision&#39;</span><span class="p">})</span>
+          <span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;subdivision&#39;</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;precip&#39;</span><span class="p">])</span>
+          <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">tidy</span><span class="p">)</span> <span class="c1"># calls function tidy with preceeding dataframe as argument</span>
+          <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">])</span>
+         <span class="p">)</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>subdivision</th>
+      <th>precip</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-08-01</th>
+      <td>LAKSHADWEEP</td>
+      <td>146.4</td>
+    </tr>
+    <tr>
+      <th>2015-09-01</th>
+      <td>LAKSHADWEEP</td>
+      <td>160.4</td>
+    </tr>
+    <tr>
+      <th>2015-10-01</th>
+      <td>LAKSHADWEEP</td>
+      <td>165.4</td>
+    </tr>
+    <tr>
+      <th>2015-11-01</th>
+      <td>LAKSHADWEEP</td>
+      <td>231.0</td>
+    </tr>
+    <tr>
+      <th>2015-12-01</th>
+      <td>LAKSHADWEEP</td>
+      <td>159.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># select data for Kerala and plot</span>
+<span class="n">df_krl</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;subdivision&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;KERALA&#39;</span><span class="p">,[</span><span class="s1">&#39;precip&#39;</span><span class="p">]]</span>
+<span class="n">df_krl</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1990&#39;</span><span class="p">:</span><span class="s1">&#39;2015&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Monthly rainfall in Kerala&quot;</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Monthly rainfall in Kerala&#39;)
+</pre></div>
+</div>
+<img alt="_images/L3-working_with_ASCII_csv_txt_14_1.png" src="_images/L3-working_with_ASCII_csv_txt_14_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># select rainfall for Telangana state and join it to the dataframe for Kerala</span>
+<span class="n">df_tel</span> <span class="o">=</span> <span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;subdivision&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;TELANGANA&#39;</span><span class="p">,[</span><span class="s1">&#39;precip&#39;</span><span class="p">]]</span>
+<span class="n">df_join</span> <span class="o">=</span> <span class="n">df_tel</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_krl</span><span class="p">,</span><span class="n">lsuffix</span><span class="o">=</span><span class="s1">&#39;_telangana&#39;</span><span class="p">,</span><span class="n">rsuffix</span><span class="o">=</span><span class="s1">&#39;_kerala&#39;</span><span class="p">)</span>
+<span class="n">df_join</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>precip_telangana</th>
+      <th>precip_kerala</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1901-01-01</th>
+      <td>6.9</td>
+      <td>28.7</td>
+    </tr>
+    <tr>
+      <th>1901-02-01</th>
+      <td>41.8</td>
+      <td>44.7</td>
+    </tr>
+    <tr>
+      <th>1901-03-01</th>
+      <td>7.8</td>
+      <td>51.6</td>
+    </tr>
+    <tr>
+      <th>1901-04-01</th>
+      <td>45.2</td>
+      <td>160.0</td>
+    </tr>
+    <tr>
+      <th>1901-05-01</th>
+      <td>22.0</td>
+      <td>174.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_join</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Rainfall distribution&quot;</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;Rainfall distribution&#39;)
+</pre></div>
+</div>
+<img alt="_images/L3-working_with_ASCII_csv_txt_16_1.png" src="_images/L3-working_with_ASCII_csv_txt_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># groupby subdivisions and plot rainall time series for three selected subdivisions</span>
+<span class="n">selected_subd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KERALA&#39;</span><span class="p">,</span><span class="s1">&#39;ARUNACHAL PRADESH&#39;</span><span class="p">,</span><span class="s1">&#39;ASSAM &amp; MEGHALAYA&#39;</span><span class="p">]</span>
+<span class="p">(</span><span class="n">df_clean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;subdivision&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">selected_subd</span><span class="p">)]</span>
+         <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;subdivision&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;1990&#39;</span><span class="p">,</span><span class="s1">&#39;2010&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>subdivision
+ARUNACHAL PRADESH       AxesSubplot(0.125,0.2;0.775x0.68)
+ASSAM &amp; MEGHALAYA    AxesSubplot(0.125,0.125;0.775x0.755)
+KERALA               AxesSubplot(0.125,0.125;0.775x0.755)
+dtype: object
+</pre></div>
+</div>
+<img alt="_images/L3-working_with_ASCII_csv_txt_17_1.png" src="_images/L3-working_with_ASCII_csv_txt_17_1.png" />
+<img alt="_images/L3-working_with_ASCII_csv_txt_17_2.png" src="_images/L3-working_with_ASCII_csv_txt_17_2.png" />
+<img alt="_images/L3-working_with_ASCII_csv_txt_17_3.png" src="_images/L3-working_with_ASCII_csv_txt_17_3.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="further-references">
+<h2>Further references:<a class="headerlink" href="#further-references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Definitely checout Pandas documentation <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/index.html">page</a>.</p></li>
+<li><p>A course of basic Pandas can be found in the <a class="reference external" href="https://realpython.com/courses/pandas-dataframes-101/">realpython</a> website.</p></li>
+<li><p>Also checkout <a class="reference external" href="https://tomaugspurger.github.io/modern-1-intro.html">tomaugspurger</a> blog on Modern Pandas</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="L2-notebookANDbasics.html" title="previous page">Jupyter Notebook</a>
+    <a class='right-next' id="next-link" href="L4-working_with_netCDF.html" title="next page">Gridded data, NetCDF</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Lijo Abraham Joseph<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-175443216-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

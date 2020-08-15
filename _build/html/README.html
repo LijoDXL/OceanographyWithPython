@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Python for data analysis in Oceanography &#8212; Oceanography with python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Aim" href="L1-introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Oceanography with python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L1-introduction.html">
+   Aim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html">
+   Jupyter Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html#the-basics">
+   The basics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Read and plot data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L3-working_with_ASCII_csv_txt.html">
+   Text files and CSV
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4-working_with_netCDF.html">
+   Gridded data, NetCDF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L5-working_with_large_dataset.html">
+   Big Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="useful_packages_list.html">
+   other packages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LijoDXL/OceanographyWithPython/edit/gh-pages/README.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-packages-in-your-environment">
+   Adding packages in your environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-tools-worth-learning">
+   Other tools worth learning
+  </a>
+  <ul class="nav section-nav flex-column">
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="python-for-data-analysis-in-oceanography">
+<h1>Python for data analysis in Oceanography<a class="headerlink" href="#python-for-data-analysis-in-oceanography" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/LijoDXL/OceanographyWithPython/master"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
+<a class="reference external" href="https://github.com/LijoDXL/OceanographyWithPython/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-blue.svg" /></a></p>
+<p><a class="reference external" href="https://twitter.com/LIJODXL"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/lijodxl?style=social" /></a></p>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>You can run this tutorial online without installing anything on your local machine just by clicking
+<code class="docutils literal notranslate"><span class="pre">launch</span> <span class="pre">Binder</span></code> icon from the top right corner of this page.</p>
+<p>If you wish to have a local copy instead, follow the steps below:</p>
+<ul class="simple">
+<li><p>Download <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a> (Python 3.x 64-bit version recommended) and install it using the instructions provided <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/install/index.html">here</a>. Skip this step if you already have miniconda/Anaconda installed.</p></li>
+<li><p>Copy and paste the following command in your terminal to clone this repository:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/LijoDXL/OceanographyWithPython.git
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change to the cloned directory and create a new <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> OceanographyWithPython
+conda env create -f PHYoceanENV.yml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can now activate the new environment by typing:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate PHY_OCEAN
+<span class="c1"># to deactivate env:</span>
+conda deactivate
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Your terminal prompt will change to indicate the currently active environment. That’s it, now try <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> by typing in your termimal:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-packages-in-your-environment">
+<h2>Adding packages in your environment<a class="headerlink" href="#adding-packages-in-your-environment" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you want to install a new package to your <code class="docutils literal notranslate"><span class="pre">PHY_OCEAN</span></code> environment. Here is what you should do:</p>
+<ul class="simple">
+<li><p>Check the package’s documentation page for a section on installation. If available, follow the instructions there. It will be usually of the form <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">&lt;channel-name&gt;</span> <span class="pre">&lt;package-name&gt;</span></code>.</p></li>
+<li><p>If not, head over to <a class="reference external" href="https://anaconda.org/">anaconda.org</a> and search with the package name there.</p></li>
+<li><p>From the search results, click the one with most number of downloads (<code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel preferred) to find the installation step.</p></li>
+<li><p>Before you install, <strong>do not forget</strong> to activate your environment by typing:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate PHY_OCEAN
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More details on managing environment with conda can be found <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">here</a>.</p>
+</div>
+</div>
+<div class="section" id="other-tools-worth-learning">
+<h2>Other tools worth learning<a class="headerlink" href="#other-tools-worth-learning" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tmux/tmux/wiki">Tmux</a>: Easily organize your various terminal sessions. Highly useful if you work with remote sessions a lot.</p></li>
+<li><p><a class="reference external" href="https://git-scm.com">Git</a>: Version control your workflow. Never have the hassle of dealing with files like draft.doc,draft_edited.doc,draft_final_correction.doc,final_v1.doc,final_v2.doc,absolutely_final.doc.</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Learn more about git <a class="reference external" href="http://swcarpentry.github.io/git-novice/">[1]</a>
+<a class="reference external" href="https://barbagroup.github.io/essential_skills_RRC/git/git/">[2]</a>
+<a class="reference external" href="https://www.atlassian.com/git/tutorials/comparing-workflows">[3]</a>.</p></li>
+<li><p>Learn more about Tmux <a class="reference external" href="https://thoughtbot.com/blog/a-tmux-crash-course">[1]</a>
+<a class="reference external" href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">[2]</a>
+<a class="reference external" href="https://tmuxp.git-pull.com/en/latest/about_tmux.html">[3]</a>.</p></li>
+</ul>
+</div>
+</div>
+<a class="reference internal image-reference" href="_images/phdComic.jpg" id="phdcomic"><img alt="_images/phdComic.jpg" class="align-center" id="phdcomic" src="_images/phdComic.jpg" style="width: 300.0px; height: 400.0px;" /></a>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="L1-introduction.html" title="next page">Aim</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Lijo Abraham Joseph<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-175443216-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Big Data &#8212; Oceanography with python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Other useful packages" href="useful_packages_list.html" />
+    <link rel="prev" title="Gridded data, NetCDF" href="L4-working_with_netCDF.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Oceanography with python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L1-introduction.html">
+   Aim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html">
+   Jupyter Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2-notebookANDbasics.html#the-basics">
+   The basics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Read and plot data
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L3-working_with_ASCII_csv_txt.html">
+   Text files and CSV
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L4-working_with_netCDF.html">
+   Gridded data, NetCDF
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Big Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Misc
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="useful_packages_list.html">
+   other packages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/L5-working_with_large_dataset.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LijoDXL/OceanographyWithPython/issues/new?title=Issue%20on%20page%20%2FL5-working_with_large_dataset.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LijoDXL/OceanographyWithPython/edit/gh-pages/L5-working_with_large_dataset.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LijoDXL/OceanographyWithPython/gh-pages/v2/gh/LijoDXL/OceanographyWithPython/gh-pages?urlpath=tree/L5-working_with_large_dataset.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dask">
+   Dask
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-resources">
+   Further resources
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="big-data">
+<h1>Big Data<a class="headerlink" href="#big-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dask">
+<h2>Dask<a class="headerlink" href="#dask" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A <a class="reference external" href="https://dask.org/">package</a> which facilitates chunking of data to fit in memory and parallelism to your code</p></li>
+<li><p>Setup is as simple as enable it and forget</p></li>
+<li><p>It integrates with popular packages like Numpy, Pandas and Xarray, so no additional syntaxes to learn.</p></li>
+<li><p>Can be <a class="reference external" href="https://docs.dask.org/en/latest/setup.html">deployed</a> on simple laptops, HPCs and even on cloud computers.</p></li>
+</ul>
+<div class="section" id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Open OSCAR surface ocean currents (large dataset with 10 GB size) and chunk it</p></li>
+<li><p>compute monthly mean currents using all cores of your cpu</p></li>
+<li><p>use 3D ocean data (EN4) to draw temperature and salinity vertical profile</p></li>
+</ul>
+<p>The data is too large to be distributed through Github. You can dowload the data from link below:</p>
+<ul class="simple">
+<li><p>OSCAR: https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_third-deg</p></li>
+<li><p>EN4: https://www.metoffice.gov.uk/hadobs/en4/</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cmocean</span>
+<span class="kn">import</span> <span class="nn">cartopy</span> <span class="k">as</span> <span class="nn">cr</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+<span class="kn">from</span> <span class="nn">cartopy.mpl.gridliner</span> <span class="kn">import</span> <span class="n">LONGITUDE_FORMATTER</span><span class="p">,</span> <span class="n">LATITUDE_FORMATTER</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">dask.diagnostics</span> <span class="kn">import</span> <span class="n">ProgressBar</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span> <span class="c1"># your local cluster</span>
+<span class="n">client</span> <span class="c1"># click the dashboard link to visualize the task and worker status</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44409</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>3</li>
+  <li><b>Cores: </b>6</li>
+  <li><b>Memory: </b>25.25 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/home/lijo/WORK/oceanCurrValidation/data/oscar_data/oscar_vel2003_2011.nc&#39;</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>11.97881186
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:    (depth: 1, latitude: 481, longitude: 1201, time: 648)
+Coordinates:
+  * longitude  (longitude) float64 20.0 20.33 20.67 21.0 ... 419.3 419.7 420.0
+  * latitude   (latitude) float64 80.0 79.67 79.33 79.0 ... -79.33 -79.67 -80.0
+  * depth      (depth) float32 15.0
+  * time       (time) datetime64[ns] 2003-01-01 2003-01-06 ... 2011-12-26
+Data variables:
+    u          (time, depth, latitude, longitude) float64 dask.array&lt;chunksize=(10, 1, 481, 1201), meta=np.ndarray&gt;
+    v          (time, depth, latitude, longitude) float64 dask.array&lt;chunksize=(10, 1, 481, 1201), meta=np.ndarray&gt;
+    um         (time, depth, latitude, longitude) float64 dask.array&lt;chunksize=(10, 1, 481, 1201), meta=np.ndarray&gt;
+    vm         (time, depth, latitude, longitude) float64 dask.array&lt;chunksize=(10, 1, 481, 1201), meta=np.ndarray&gt;
+Attributes:
+    CDI:            Climate Data Interface version ?? (http://mpimet.mpg.de/cdi)
+    Conventions:    CF-1.4
+    history:        Wed Oct 18 12:18:41 2017: cdo mergetime oscar_vel2003.nc ...
+    source:         Kathleen Dohan, ESR (kdohan@esr.org)
+    VARIABLE:       Ocean Surface Currents
+    DATATYPE:       1/72 YEAR Interval
+    DATASUBTYPE:    unfiltered
+    GEORANGE:       20 to 420 -80 to 80
+    PERIOD:         Jan.01,2003 to Dec.26,2003
+    year:           2003
+    description:    OSCAR Third Degree Sea Surface Velocity
+    CREATION_DATE:  16:06 04-Apr-2017
+    version:        2017.0
+    contact:        Kathleen Dohan (kdohan@esr.org)
+    company:        Earth &amp; Space Research, Seattle, WA
+    reference:      Bonjean F. and G.S.E. Lagerloef, 2002 ,Diagnostic model a...
+    note1:          Maximum Mask velocity is the geostrophic component at all...
+    note2:          Longitude extends from 20 E to 420 E to avoid a break in ...
+    CDO:            Climate Data Operators version 1.7.2 (http://mpimet.mpg.d...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;time&#39; (time: 648)&gt;
+array([&#39;2003-01-01T00:00:00.000000000&#39;, &#39;2003-01-06T00:00:00.000000000&#39;,
+       &#39;2003-01-11T00:00:00.000000000&#39;, ..., &#39;2011-12-16T00:00:00.000000000&#39;,
+       &#39;2011-12-21T00:00:00.000000000&#39;, &#39;2011-12-26T00:00:00.000000000&#39;],
+      dtype=&#39;datetime64[ns]&#39;)
+Coordinates:
+  * time     (time) datetime64[ns] 2003-01-01 2003-01-06 ... 2011-12-26
+Attributes:
+    standard_name:  time
+    long_name:      Day since 1992-10-05 00:00:00
+    axis:           T
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_mean</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_mean</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span><span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">120</span><span class="p">),</span><span class="n">month</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">u</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f9eec01b8d0&gt;
+</pre></div>
+</div>
+<img alt="_images/L5-working_with_large_dataset_11_1.png" src="_images/L5-working_with_large_dataset_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_en4</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/home/lijo/WORK/oceanCurrValidation/data/en42003-2010.nc&#39;</span><span class="p">,</span><span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_en4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:     (DEPTH: 42, LAT: 173, LON: 360, TMON: 96, bnds: 2)
+Coordinates:
+  * LON         (LON) float32 1.0 2.0 3.0 4.0 5.0 ... 357.0 358.0 359.0 360.0
+  * LAT         (LAT) float32 -83.0 -82.0 -81.0 -80.0 ... 86.0 87.0 88.0 89.0
+  * DEPTH       (DEPTH) float32 5.0215898 15.07854 ... 5050.9897 5350.272
+  * TMON        (TMON) float64 2.436e+03 2.437e+03 ... 2.53e+03 2.531e+03
+Dimensions without coordinates: bnds
+Data variables:
+    DEPTH_bnds  (DEPTH, bnds) float32 ...
+    TEMP        (TMON, DEPTH, LAT, LON) float64 ...
+    SAL         (TMON, DEPTH, LAT, LON) float64 ...
+Attributes:
+    history:      FERRET V7.4 (optimized)  5-Jul-18
+    Conventions:  CF-1.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_en4</span><span class="o">.</span><span class="n">nbytes</span><span class="o">/</span><span class="mf">1e9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>4.017810764
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ds_temp</span> <span class="o">=</span> <span class="n">ds_en4</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">LAT</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">LON</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">82</span><span class="p">))</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">TMON</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">TEMP</span>
+<span class="n">ds_sal</span> <span class="o">=</span> <span class="n">ds_en4</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">LAT</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">LON</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span><span class="mi">82</span><span class="p">))</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">TMON</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">SAL</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds_temp</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">,</span><span class="n">ds_temp</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">ds_sal</span><span class="o">&lt;</span><span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds_sal</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">),</span><span class="n">ds_sal</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">t</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LAT&#39;</span><span class="p">,</span><span class="s1">&#39;LON&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">,</span><span class="n">yincrease</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LAT&#39;</span><span class="p">,</span><span class="s1">&#39;LON&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">,</span><span class="n">yincrease</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+    <span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ticklabel</span> <span class="ow">in</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">():</span>
+    <span class="n">ticklabel</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/L5-working_with_large_dataset_16_0.png" src="_images/L5-working_with_large_dataset_16_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="further-resources">
+<h2>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Documentation <a class="reference external" href="https://docs.dask.org/en/latest/">page</a></p></li>
+<li><p>Dask+Xarray <a class="reference external" href="https://github.com/pangeo-data/pangeo-tutorial-sea-2018/tree/master/notebooks">tutorial</a></p></li>
+<li><p>Dask <a class="reference external" href="https://github.com/dask/dask-tutorial">tutorial</a></p></li>
+<li><p><a class="reference external" href="https://pangeo.io/use_cases/physical-oceanography/sea-surface-height.html">Example</a> of cloud computing using dask</p></li>
+<li><p>Follow Matthew Rocklin’s <a class="reference external" href="http://matthewrocklin.com/blog/">blog</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="L4-working_with_netCDF.html" title="previous page">Gridded data, NetCDF</a>
+    <a class='right-next' id="next-link" href="useful_packages_list.html" title="next page">Other useful packages</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Lijo Abraham Joseph<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-175443216-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
