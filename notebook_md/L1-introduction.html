@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome &#8212; Oceanography with python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Oceanography with python</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Python for data analysis in Oceanography
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../useful_packages_list.html">
+   Other useful Python packages for Oceanographic/meteorological data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L1-introduction.html">
+   Welcome
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html">
+   Jupyter Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#shortcuts-to-remember">
+   shortcuts to remember:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#the-basics">
+   The basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#numpy">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#speeding-up-operations-with-code-change">
+   Speeding up operations with code change
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#remarks">
+   Remarks:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L2-notebookANDbasics.html#further-references">
+   Further references
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L3-working_with_ASCII_csv_txt.html">
+   Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L3-working_with_ASCII_csv_txt.html#exercise">
+   Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L3-working_with_ASCII_csv_txt.html#further-references">
+   Further references:
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L4-working_with_netCDF.html">
+   Xarray
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L4-working_with_netCDF.html#exercise">
+   Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L4-working_with_netCDF.html#further-resources">
+   Further resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L5-working_with_large_dataset.html">
+   Dask
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L5-working_with_large_dataset.html#exercise">
+   Exercise
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../L5-working_with_large_dataset.html#further-resources">
+   Further resources
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebook_md/L1-introduction.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goals">
+   Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-ecosystem">
+   Python ecosystem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-a-py-script">
+     Running a .py script
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#three-ways-to-spawn-a-python-interpreter">
+     Three ways to spawn a python interpreter
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#starting-the-console">
+       Starting the console
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ipython">
+       IPython
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jupyterlab-and-jupyter-notebook">
+       JupyterLab and Jupyter Notebook
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stay-away-from-python-2">
+     Stay away from Python 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anaconda-miniconda-and-conda-env">
+     Anaconda, miniconda and conda env
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#further-references">
+     Further references
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <!-- #region slideshow={"slide_type": "subslide"} -->
+<div class="section" id="welcome">
+<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Introduce the Python ecosystem</p>
+<ul class="simple">
+<li><p>How do I run a .py script?</p></li>
+<li><p>Where do I enter python commands?</p></li>
+<li><p>What is there Python 2 and Python 3?</p></li>
+<li><p>wait!, there is something called Anaconda?</p></li>
+<li><p>JupyterLab, Jupyter Notebooks and reproducible research</p></li>
+</ul>
+</li>
+<li><p>Why should I use Python?</p>
+<ul class="simple">
+<li><p>Is Python as easy as Ferret?</p></li>
+<li><p>Is Python as fast as Fortran?</p></li>
+<li><p>Does Python have as many toolboxes like in MATLAB?</p></li>
+<li><p>Can Python read and write netCDF files?</p></li>
+<li><p>Can Python plot geographic maps and coastlines?</p></li>
+<li><p>Can it handle larger than 1 GB files?</p></li>
+</ul>
+</li>
+<li><p>Possibilities with Python</p>
+<ul class="simple">
+<li><p>Exploratory Data Analysis</p></li>
+<li><p>Interactive plotting</p></li>
+<li><p>Parallel processing</p></li>
+<li><p>Cloud computing</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="python-ecosystem">
+<h2>Python ecosystem<a class="headerlink" href="#python-ecosystem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="running-a-py-script">
+<h3>Running a .py script<a class="headerlink" href="#running-a-py-script" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Activate your environment, and run the script by</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> python your_script.py
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="three-ways-to-spawn-a-python-interpreter">
+<h3>Three ways to spawn a python interpreter<a class="headerlink" href="#three-ways-to-spawn-a-python-interpreter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>old fashioned <code class="docutils literal notranslate"><span class="pre">python</span></code> console</p></li>
+<li><p>rich and colorful <code class="docutils literal notranslate"><span class="pre">ipython</span></code> console</p></li>
+<li><p>JupyterLab</p></li>
+</ul>
+<div class="section" id="starting-the-console">
+<h4>Starting the console<a class="headerlink" href="#starting-the-console" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>In terminal, type <code class="docutils literal notranslate"><span class="pre">python</span></code></p></li>
+<li><p>In terminal, type <code class="docutils literal notranslate"><span class="pre">ipython</span></code></p></li>
+<li><p>In terminal, type <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="ipython">
+<h4>IPython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Old python interface is boring and less interactive</p></li>
+<li><p>IPython supports tab completion, syntax highlighting, documentation lookup</p></li>
+<li><p><a class="reference external" href="https://ipython.org/ipython-doc/3/interactive/magics.html">cell magics</a>
+like <code class="docutils literal notranslate"><span class="pre">%run</span></code>, <code class="docutils literal notranslate"><span class="pre">%debug</span></code>, <code class="docutils literal notranslate"><span class="pre">%edit</span></code> and <code class="docutils literal notranslate"><span class="pre">%bookmark</span></code> makes interactive coding easier</p></li>
+</ul>
+<p>More info can be found <a class="reference external" href="https://ipython.org/ipython-doc/3/interactive/tutorial.html">here</a></p>
+</div>
+<div class="section" id="jupyterlab-and-jupyter-notebook">
+<h4>JupyterLab and Jupyter Notebook<a class="headerlink" href="#jupyterlab-and-jupyter-notebook" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p><a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/">JupyterLab</a> is an interface where you can</p>
+<ul class="simple">
+<li><p>create notebooks</p></li>
+<li><p>manage files and folders</p></li>
+<li><p>display images</p></li>
+<li><p>start terminal</p></li>
+<li><p>display csv files and much more</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html">Notebooks</a>
+holds your code, plots and discussion in a single space</p></li>
+<li><p>Notebook sharing promotes reproducible research</p></li>
+<li><p>Notebooks are future  of scientific communication,
+says Nature <a class="reference external" href="https://www.nature.com/news/interactive-notebooks-sharing-the-code-1.16261">article</a></p></li>
+<li><p>Additional benefits of JupyterLab/Notebook</p>
+<ul>
+<li><p>Start jupyter in a remote computer say HPC and connect in your local browser</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> <span class="c1"># in remote machine type:</span>
+ jupyter lab --no-browser --ip<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOSTNAME</span><span class="s2">&quot;</span> --port<span class="o">=</span><span class="m">8888</span>
+ <span class="c1"># in local machine type:</span>
+ ssh -N -L <span class="m">8888</span>:localhost:8888 username@remoteIP
+</pre></div>
+</div>
+</li>
+<li><p>Open browser and type address as localhost:8888 and press enter</p></li>
+<li><p>No more waiting for the slow X-window forwarding to pop-up</p></li>
+<li><p>Easily access and view remote files</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Jupyter is not limited to Python. You can **run codes in**
+    * Julia
+    * Bash
+    * R
+    * pyferret and much more
+</pre></div>
+</div>
+<!-- #endregion -->
+<!-- #region slideshow={"slide_type": "subslide"} -->
+</div>
+</div>
+<div class="section" id="stay-away-from-python-2">
+<h3>Stay away from Python 2<a class="headerlink" href="#stay-away-from-python-2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Avoid Python 2. It is now in <em>legacy</em> mode</p></li>
+<li><p>Packages are dropping support for Python 2</p></li>
+<li><p>Most scientific packages have moved to Python 3</p></li>
+<li><p>Found an old code in Python 2? Use conda to create a Python 2 environment</p></li>
+</ul>
+</div>
+<div class="section" id="anaconda-miniconda-and-conda-env">
+<h3>Anaconda, miniconda and conda env<a class="headerlink" href="#anaconda-miniconda-and-conda-env" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Anaconda and miniconda differs only in the number of pre-packed packages</p></li>
+<li><p>Anaconda comes with many common-use packages (&gt; 500 MB)</p></li>
+<li><p>While miniconda is a lite version (&lt;60 MB)</p></li>
+<li><p>Both installs <code class="docutils literal notranslate"><span class="pre">conda</span></code>, which is the package manager</p></li>
+<li><p>Conda helps you isolate environments, allowing you to update/install certain packages without affecting<br />
+other working environment.</p></li>
+</ul>
+</div>
+<div class="section" id="further-references">
+<h3>Further references<a class="headerlink" href="#further-references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Rather than general python tutorials, look for scientific computing tutorials</p></li>
+<li><p>Some such python lessons covering basics are:</p>
+<ul>
+<li><p>https://geo-python.github.io/site/index.html</p></li>
+<li><p>https://scipy-lectures.org/</p></li>
+<li><p>https://fabienmaussion.info/scientific_programming/html/00-Introduction.html</p></li>
+<li><p>https://github.com/geoschem/GEOSChem-python-tutorial</p></li>
+<li><p>https://unidata.github.io/online-python-training/</p></li>
+<li><p>https://rabernat.github.io/research_computing/</p></li>
+<li><p>http://swcarpentry.github.io/python-novice-inflammation/</p></li>
+</ul>
+</li>
+</ul>
+<!-- #endregion -->
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebook_md"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Lijo Abraham Joseph<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
